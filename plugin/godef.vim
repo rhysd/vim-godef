@@ -12,6 +12,13 @@ if !exists("g:godef_same_file_in_same_window")
     let g:godef_same_file_in_same_window=0
 endif
 
+if !executable(g:godef_command)
+    echohl ErrorMsg
+    echom string(g:godef_command) . " command is not found. Install it with below commands"
+    echom "    go get -v code.google.com/p/rog-go/exp/cmd/gode"
+    echom "    go install -v code.google.com/p/rog-go/exp/cmd/godef"
+    echohl None
+endif
 
 function! GodefUnderCursor()
     let pos = getpos(".")[1:2]
